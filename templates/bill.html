@@ -1,0 +1,104 @@
+{% extends "layout.html" %}
+
+{% block title %} Generate Bill {% endblock %}
+
+{% block style %}
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    nav img {
+        background-color: wheat;
+        width: 7vh;
+    }
+
+    .table {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #ffffff;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    th {
+        background-color: #7cb2ed;
+        color: rgb(0, 0, 0);
+    }
+
+    .customer-list {
+        margin-top: 20px;
+    }
+
+    .customer {
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        margin-bottom: 10px;
+    }
+
+    .customer h3 {
+        font-size: 20px;
+        margin-top: 0;
+        background-color: #ffffff;
+        color: rgb(0, 0, 0);
+        padding: 10px;
+        border-radius: 5px 5px 0 0;
+    }
+
+    .date-list {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    .date-list li {
+        font-size: 16px;
+        margin-left: 20px;
+        margin-top: 5px;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+<div class="table">
+    <center>
+        <h1>Customer Data</h1>
+    </center>
+    <div class="customer-list">
+        <table>
+            <tr>
+                <th>Customer</th>
+                <th>Dates</th>
+            </tr>
+            {% for customer, dates in data_dict.items() %}
+                <tr class="customer">
+                    <td>
+                        <h3>{{ customer }}</h3>
+                    </td>
+                    <td>
+                        <ul class="date-list">
+                            {% for date in dates %}
+                                <li>{{ date }}</li>
+                            {% endfor %}
+                        </ul>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+{% endblock %}

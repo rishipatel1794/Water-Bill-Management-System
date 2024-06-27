@@ -1,0 +1,95 @@
+{% extends "layout.html" %}
+
+{% block title %} Today Entry {% endblock %}
+{% block style %}
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        nav img {
+            background-color: wheat;
+            width: 7vh;
+        }
+
+        thead{
+            background-color: black;
+            color: aqua;
+        }
+
+        td button img{
+            width: 30px;
+        }
+
+        td button{
+            margin-left: 10px;
+        }
+
+        .edit{
+            background-color: orange;
+            border: 3px solid orange;
+            border-radius: 10px;
+        }
+        .edit:hover{
+            transform: scale(1.2);
+            transition: transform .5s;
+        }
+
+        .delete{
+            background-color: red;
+            border: 3px solid red;
+            border-radius: 10px;
+        }
+
+        .delete:hover{
+            transform: scale(1.2);
+            transition: transform .5s;
+        }
+
+        .form-check-input{
+            margin-left: 55px;
+        }
+
+        .table{
+            margin: auto;
+        }
+
+        .btn{
+            margin-left: 510px;
+            margin-top: 10px;
+        }
+    </style>
+    {% endblock %}
+    {% block body %}
+    <main>
+        <div class="container" style="margin-top: 30px;">
+            <h1 class="text-center my-4">Data Entry</h1>
+            <form action="/entry" method="post">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">S.No.</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Left Bill</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Today's Supply</th>
+                </tr>     
+            </thead>
+            <tbody>
+                {% for customer in customer %}
+                <tr>
+                    <th scope="row">{{loop.index}}</th>
+                    <td>{{ customer.name }}</td>
+                    <td>{{ customer.leftAmt }}</td>
+                    <td>{{today_date}}</td>
+                    <td><input class="form-check-input" type="checkbox" name="check" value="{{customer.sno}}" id="entry"></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <button type="submit" class="btn btn-danger">Submit</button>
+    </form>
+    </div>
+    </main>
+{% endblock %}

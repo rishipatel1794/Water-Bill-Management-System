@@ -1,0 +1,7 @@
+{
+    "params":{
+        "admin_user" : "rishi",
+        "admin_password" : "rishi",
+        "water_price" : 30
+    }
+}

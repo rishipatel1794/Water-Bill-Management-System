@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+
+{% block title %} Add Customer {% endblock %}
+{% block body %}
+<main>
+	<div class="container">
+		<form action="/addcustomer" method="post" style="margin: 0 10%;">
+			<h1 style="text-align: center;">Add Customer</h1>
+			<div class="container">
+				{% if errors %}
+				<div class="alert alert-danger" role="alert">
+					<ul>
+						{% for error in errors %}
+						<li>{{ error }}</li>
+						{% endfor %}
+					</ul>
+				</div>
+				{% endif %}
+
+				{% if msg %}
+				<div class="alert alert-success" role="success">
+					{{msg}}
+				</div>
+				{% endif %}
+			</div>
+			<div class="form-group">
+				<label for="name">Name</label>
+				<input type="text" class="form-control" name="name" id="name" placeholder="Enter Name">
+			</div>
+			<div class="form-group">
+				<label for="email">Email address</label>
+				<input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp"
+					placeholder="Enter email address">
+				<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+					else.</small>
+			</div>
+			<div class="form-group">
+				<label for="phone">Phone No.</label>
+				<input type="text" name="phone" class="form-control" id="phone" pattern="[0-9]{10}"
+					placeholder="Enter Phone No.(xxxxxxxxxx)">
+			</div>
+
+			<div class="form-group">
+				<label for="address">Address</label>
+				<textarea class="form-control" id="address" name="address" rows="3" placeholder="Enter Address"></textarea>
+			</div>
+			<button type="submit" class="btn btn-primary">Submit</button>
+		</form>
+	</div>
+</main>
+{% endblock %}

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Customer Data</title>
+</head>
+<body>
+    <h1>Customer Data</h1>
+    {% for customer, dates in data_dict.items() %}
+        <h2>{{ customer }}</h2>
+        <ul>
+            {% for date in dates %}
+                <li>{{ date }}</li>
+            {% endfor %}
+        </ul>
+    {% endfor %}
+</body>
+</html>

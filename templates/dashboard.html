@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+
+{% block title %} Dashboard {% endblock %}
+{% block style %}
+<style>
+	* {
+		margin: 0;
+		padding: 0;
+	}
+
+	nav img {
+		background-color: wheat;
+		width: 7vh;
+	}
+
+	body {
+		background-color: rgb(232, 240, 240);
+	}
+
+	.container {
+		margin-top: 3rem;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+
+	.card {
+		margin-right: 20px;
+	}
+</style>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+	<div class="card text-white bg-success mb-3" style="width: 18rem;">
+		<div class="card-header">Left Amount</div>
+		<div class="card-body">
+			<h5 class="card-title">₹{{result}}</h5>
+		</div>
+	</div>
+	<div class="card text-white bg-danger mb-3" style="width: 18rem;">
+		<div class="card-header">Total Customer</div>
+		<div class="card-body">
+			<h5 class="card-title">{{row}}</h5>
+		</div>
+	</div>
+
+	<div class="card text-white bg-primary mb-3" style="width: 18rem;">
+		<div class="card-header">Number of customers who have made payment</div>
+		<div class="card-body">
+			<h5 class="card-title">{{res | default(0)}}</h5>
+		</div>
+	</div>
+</div>
+{% endblock %}

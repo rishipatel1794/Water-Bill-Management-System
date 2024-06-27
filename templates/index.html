@@ -1,0 +1,403 @@
+{% extends "base.html" %}
+{% block style %}
+<style>
+    /* Style for header */
+    header {
+        background-color: #007BFF;
+        color: white;
+        padding: 20px;
+        text-align: center;
+    }
+
+    /* Style for navigation links */
+    nav {
+        margin-top: 20px;
+    }
+
+    nav a {
+        color: white;
+        margin: 0 10px;
+        text-decoration: none;
+    }
+
+    /* Style for main sections */
+    main {
+        padding: 20px;
+    }
+
+    /* Add animation styles to your contact form */
+    /* Style for contact form */
+    form {
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 20px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        max-width: 500px;
+        margin: 0 auto;
+        animation: fadeIn 1s ease-in-out;
+        animation-delay: 0.5s;
+    }
+
+    /* Style for form labels */
+    form label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+
+    /* Style for form inputs */
+    form input[type="text"],
+    form input[type="email"],
+    form textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+    }
+
+    /* Style for the submit button */
+    form button[type="submit"] {
+        background-color: #007BFF;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 18px;
+    }
+
+    /* Hover effect for the submit button */
+    form button[type="submit"]:hover {
+        background-color: #0056b3;
+    }
+
+    /* Add animation for form elements */
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Style for form inputs */
+    form input[type="text"],
+    form input[type="email"],
+    form textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+        transition: all 0.3s;
+        /* Add a transition for smooth changes */
+    }
+
+    /* Style for form inputs when focused */
+    form input[type="text"]:focus,
+    form input[type="email"]:focus,
+    form textarea:focus {
+        border-color: #007BFF;
+        /* Change the border color when focused */
+        box-shadow: 0px 0px 10px rgba(0, 123, 255, 0.5);
+        /* Add a subtle box shadow */
+        transform: scale(1.03);
+        /* Apply a slight zoom-in effect */
+    }
+
+    /* Responsive layout for smaller screens */
+    @media screen and (max-width: 768px) {
+
+        /* Adjust header styles for smaller screens */
+        header {
+            padding: 10px;
+        }
+
+        /* Center-align the logo */
+        .logo {
+            text-align: center;
+        }
+
+        /* Stack navigation links vertically on smaller screens */
+        nav {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        nav a {
+            display: block;
+            margin: 5px 0;
+        }
+    }
+
+    #go-top-button {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: #007BFF;
+        color: white;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 40px;
+        cursor: pointer;
+        display: none;
+    }
+
+    #go-top-button a {
+        text-decoration: none;
+        color: white;
+    }
+
+    #go-top-button:hover {
+        background-color: #0056b3;
+    }
+</style>
+{% endblock %}
+{% block body %}
+
+<header>
+    <div class="mainheader">
+        <div class="logo">
+            <img src="{{url_for('static',filename='favicon.ico')}}" alt="">
+        </div>
+        <nav>
+            <a href="/">Home</a>
+            <a href="#about">About us</a>
+            <a href="#services">Services</a>
+            <a href="#contact">contact us</a>
+        </nav>
+        <div class="sign">
+            <a href="/dashboard"><button class="login" type="button">Login</button></a>
+        </div>
+    </div>
+
+    <main>
+        <section class="left-sec">
+            <h1 class="typewriter">Welcome to Water Bill Management System!</h1>
+            <br>
+            <p>Effortlessly manage your water bills with our user-friendly platform. Our system is designed to
+                simplify the process of tracking and paying your water bills, ensuring you never miss a payment and
+                stay in control of your expenses.</p>
+        </section>
+        <section class="right-sec">
+            <figure>
+                <img src="{{url_for('static',filename='water.png')}}" alt="">
+            </figure>
+        </section>
+    </main>
+</header>
+
+<div id="go-top-button">
+    <a href="#header">
+        <i class="fas fa-chevron-up"></i>
+    </a>
+</div>
+
+
+<main id="about" class="content-section">
+    <div class="about">
+        <p>
+        <h1>Welcome to our Water Bill Management System!</h1>
+        <br>
+        <br>
+        <br>
+        We believe in providing efficient and user-friendly solutions to manage your
+        water bills effectively. Our state-of-the-art platform is designed to simplify the complexities of
+        water bill management, empowering both individuals and businesses to take control of their water
+        consumption and billing processes.
+        <br>
+        <br>
+        Our Story:
+        [Company Name] was founded with a vision to revolutionize how water bills are managed and perceived.
+        Frustrated by the lack of transparency, exorbitant bills, and tedious manual processes involved in
+        water billing, our team of passionate experts came together to develop an innovative solution. With
+        a commitment to sustainability and customer satisfaction, we embarked on a journey to create the
+        most reliable and accessible Water Bill Management System.
+        <br>
+        <br>
+        What We Do:
+        Our Water Bill Management System offers a comprehensive suite of features that cater to your diverse
+        water billing needs. From tracking your water usage to generating detailed billing reports, we
+        ensure that you have all the tools necessary to make informed decisions about your water
+        consumption.
+        <br>
+        <br>
+        Key Features:
+        <br>
+        Real-time Water Usage Monitoring: Keep a close eye on your water consumption with our real-time
+        monitoring feature. Understand your usage patterns and identify opportunities to save water and
+        money.
+        <br>
+        <br>
+        Automated Billing and Invoicing: Say goodbye to manual billing processes. Our automated system
+        generates accurate and transparent bills, providing you with a hassle-free experience.
+        <br>
+        <br>
+        Smart Leak Detection: Leaks can be costly and harmful to the environment. Our system detects
+        potential leaks promptly, helping you prevent wastage and avoid unexpected expenses.
+        <br>
+        <br>
+        Historical Usage Insights: Access your past water usage data and compare trends over time. This
+        valuable information allows you to make adjustments and optimize your water consumption.
+        <br>
+        <br>
+        Payment Gateway Integration: Conveniently pay your water bills online through our secure payment
+        gateway. We support various payment methods for a seamless transaction experience.
+        <br>
+        <br>
+        Customer Support: Our dedicated support team is always ready to assist you with any queries or
+        concerns.We value your satisfaction and are committed to ensuring a smooth experience with our
+        platform.
+        <br>
+        <br>
+        Our Mission:
+        Our mission is to empower individuals and businesses to become responsible stewards of water
+        resources by providing them with the necessary tools to monitor, manage, and conserve water
+        effectively. We strive to create a positive impact on the environment and the communities we serve
+        by promoting water conservation practices and sustainable water management.
+        <br>
+        <br>
+        Join us on this journey towards a sustainable future, where every drop of water counts, and managing
+        your water bills is a breeze with [Company Name]!
+        <br>
+        <br>
+        Contact us today to learn more about our Water Bill Management System and how we can assist you in
+        taking control of your water consumption and billing processes. Together, let's make a difference
+        for our planet and future generations.
+        </p>
+    </div>
+</main>
+
+<main id="services" class="content-section">
+    <div class="services">
+        <h1>Services</h1>
+        <br>
+        <br>
+        <p>Our Water Bill Management System offers a comprehensive range of services tailored to meet your specific
+            water billing needs. With cutting-edge technology and a user-friendly interface, we aim to provide you
+            with a seamless experience that simplifies the complexities of water bill management. Below are the key
+            services we offer:
+            <br>
+            <br>
+            Water Usage Tracking:
+            Effortlessly monitor your water consumption in real-time with our intuitive tracking system. Access
+            detailed insights into your daily, weekly, and monthly usage patterns. Understanding your water usage
+            habits empowers you to make informed decisions and implement water-saving practices.
+            <br>
+            <br>
+            Automated Billing and Invoicing:
+            Gone are the days of manual billing hassles. Our system automates the billing process, ensuring accurate
+            and transparent bills every time. Say goodbye to estimation errors and surprise charges, as our platform
+            calculates your bill based on actual consumption data.
+            <br>
+            <br>
+            Leak Detection and Alerts:
+            Undetected leaks can lead to substantial water wastage and inflated bills. Our smart leak detection
+            technology keeps a vigilant eye on your water usage, promptly identifying any irregularities that may
+            indicate leaks. You'll receive instant alerts, allowing you to address the issue promptly and avoid
+            unnecessary expenses.
+            <br>
+            <br>
+            Historical Usage Reports:
+            Access your historical water usage reports at any time. Our platform maintains a comprehensive record of
+            your past consumption patterns, enabling you to analyze trends and make data-driven decisions to
+            optimize your water usage.
+            <br>
+            <br>
+            Payment Gateway Integration:
+            Paying your water bill has never been easier. Our platform integrates with secure payment gateways,
+            enabling you to make online payments conveniently. Choose from multiple payment options, making the
+            entire process quick, safe, and hassle-free.
+            <br>
+            <br>
+            Customer Support and Assistance:
+            Our dedicated customer support team is available to assist you with any inquiries, technical issues, or
+            general assistance you may require. We prioritize your satisfaction and are committed to delivering a
+            seamless experience with our services.
+            <br>
+            <br>
+            Customizable Alerts and Notifications:
+            Tailor alerts and notifications to suit your preferences. Whether you want daily water usage summaries
+            or alerts for specific consumption thresholds, our system allows you to personalize notifications
+            according to your needs.
+            <br>
+            <br>
+            Water Conservation Tips and Recommendations:
+            We believe in promoting water conservation and sustainability. As part of our commitment to
+            environmental responsibility, our platform provides practical water-saving tips and recommendations to
+            help you reduce your water consumption and ecological footprint.
+            <br>
+            <br>
+            Multi-Property Management:
+            For businesses or individuals with multiple properties, our Water Bill Management System offers seamless
+            multi-property management. Monitor and manage water usage for all your properties from a single,
+            centralized platform.
+            <br>
+            <br>
+            At [Company Name], we are dedicated to helping you take control of your water bills and contribute to a
+            more sustainable future. Our services are designed to simplify your water bill management, foster
+            responsible water usage, and save you time and money.
+            <br>
+            <br>
+            Join us in embracing a greener, more efficient approach to managing your water bills. Explore our
+            services today and experience the convenience and benefits of our Water Bill Management System. Should
+            you have any questions or require further information, our team is ready to assist you. Together, let's
+            make a positive impact on our environment and create a brighter tomorrow.
+        </p>
+    </div>
+</main>
+
+<main id="contact" class="content-section">
+    <div class="container">
+        <form action="/" method="post">
+            <h1>Contact Form</h1>
+            <label for="cname" id="cname">Name</label>
+            <input type="text" placeholder="Enter Your Name" id="name" name="name"><br>
+            <label for="cemail" id="cemail">Email</label>
+            <input type="email" placeholder="Enter Your Email" id="email" name="email"><br>
+            <label for="ask" id="asklbl">Ask Me Something</label>
+            <textarea name="msg" id="msg" cols="60" rows="5"></textarea><br>
+            <button type="submit">Submit</button>
+            {% if params %}
+            <script>
+                alert("Your form was successfully submitted.")
+            </script>
+            {% endif %}
+        </form>
+    </div>
+</main>
+{% endblock %}
+
+{% block script %}
+<script>
+
+    window.addEventListener("scroll", function () {
+        var goTopButton = document.getElementById("go-top-button");
+        if (window.scrollY >= 200) {
+            goTopButton.style.display = "block";
+        } else {
+            goTopButton.style.display = "none";
+        }
+    });
+
+    // Smooth scroll to top when the button is clicked
+    document.querySelector("#go-top-button").addEventListener("click", function (e) {
+        e.preventDefault();
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+        });
+    });
+</script>
+
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+{% block title %} Add Customer {% endblock %}
+{% block body %}
+<main>
+	<div class="container" style="margin: 50px auto; width: 550px;">
+		<form action="/update/{{customer.sno}}" method="post">
+			<h1 style="text-align: center;">Update Customer</h1>
+			<div class="container">
+				{% if errors %}
+				<div class="alert alert-danger" role="alert">
+					<ul>
+						{% for error in errors %}
+						<li>{{ error }}</li>
+						{% endfor %}
+					</ul>
+				</div>
+				{% endif %}
+
+				{% if msg %}
+				<div class="alert alert-success" role="success">
+					{{msg}}
+				</div>
+				{% endif %}
+			</div>
+			<div class="form-group">
+				<label for="name">Name</label>
+				<input type="text" class="form-control" name="name" id="name" value="{{customer.name}}">
+			</div>
+			<div class="form-group">
+				<label for="email">Email address</label>
+				<input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp"
+                value="{{customer.email}}">
+				<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+					else.</small>
+			</div>
+			<div class="form-group">
+				<label for="phone">Phone No.</label>
+				<input type="text" name="phone" class="form-control" id="phone" pattern="[0-9]{10}"
+                value="{{customer.phone}}">
+			</div>
+
+            <div class="form-group">
+				<label for="leftAmt">Left Amount</label>
+				<input type="number" class="form-control" name="leftAmt" id="leftAmt" value="{{customer.leftAmt}}">
+			</div>
+
+			<div class="form-group">
+				<label for="address">Address</label>
+				<textarea class="form-control" id="address" name="address" rows="3">{{customer.address}}</textarea>
+			</div>
+			<button type="submit" class="btn btn-primary">Update</button>
+		</form>
+	</div>
+</main>
+{% endblock %}

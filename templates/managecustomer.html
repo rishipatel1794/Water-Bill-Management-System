@@ -1,0 +1,158 @@
+{% extends "layout.html" %}
+{% block title %} Manage Customer {% endblock %}
+{% block style %}
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    nav img {
+        background-color: wheat;
+        width: 7vh;
+    }
+
+    thead {
+        background-color: black;
+        color: aqua;
+    }
+
+    td button img {
+        width: 30px;
+    }
+
+    td button {
+        margin-left: 10px;
+    }
+
+    .edit {
+        background-color: orange;
+        padding: 10px 20px;
+        border: 3px solid orange;
+        border-radius: 10px;
+        text-decoration: none;
+        color: white;
+        transition: transform .5s;
+    }
+
+    .edit:hover {
+        background-color: darkorange;
+        transform: scale(1.1);
+    }
+
+    .delete {
+        background-color: red;
+        padding: 10px 20px;
+        border: 3px solid red;
+        border-radius: 10px;
+        text-decoration: none;
+        color: white;
+        transition: transform .5s;
+    }
+
+    .delete:hover {
+        background-color: darkred;
+        transform: scale(1.1);
+    }
+
+    .confirmation-dialog {
+        background-color: #fff;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1000;
+        display: none;
+    }
+
+    .confirmation-dialog h2 {
+        margin-bottom: 20px;
+    }
+
+    .confirmation-dialog .btn-confirmation {
+        background-color: red;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .confirmation-dialog .btn-cancel {
+        background-color: #ccc;
+        color: #333;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+</style>
+{% endblock %}
+{% block body %}
+<main>
+    <div class="container" style="margin-top: 30px;">
+        <h1 class="text-center my-4">Manange Customers</h1>
+        <table class="table table-striped" id="my-table">
+            <thead>
+                <tr>
+                    <th scope="col">S.No.</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">email</th>
+                    <th scope="col">Owes you</th>
+                    <th scope="col">Operations</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for customer in customer %}
+                <tr>
+                    <th scope="row">{{loop.index}}</th>
+                    <td>{{ customer.name }}</td>
+                    <td>{{ customer.email }}</td>
+                    <td>{{ customer.leftAmt }}</td>
+                    <td><a class="edit" href="/update/{{customer.sno}}"><img
+                                src="{{url_for('static',filename='edit.png')}}" alt=""></a>
+                        <a class="delete" href="#" data-sno="{{customer.sno}}"><img
+                                src="{{url_for('static',filename='delete.png')}}" alt=""></a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</main>
+
+<div class="confirmation-dialog" id="confirmDeleteDialog">
+    <h2>Confirm Deletion</h2>
+    <p>Are you sure you want to delete this data?</p>
+    <button class="btn-confirmation" id="confirmDeleteBtn">Yes</button>
+    <button class="btn-cancel" id="cancelDeleteBtn">No</button>
+</div>
+
+<script>
+    const deleteButtons = document.querySelectorAll('.delete');
+    const confirmDeleteDialog = document.getElementById('confirmDeleteDialog');
+    const confirmDeleteBtn = document.getElementById('confirmDeleteBtn');
+    const cancelDeleteBtn = document.getElementById('cancelDeleteBtn');
+
+    deleteButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.preventDefault();
+            const sno = e.currentTarget.getAttribute('data-sno');
+            confirmDeleteDialog.style.display = 'block';
+
+            confirmDeleteBtn.addEventListener('click', () => {
+                // Redirect to delete route with sno parameter
+                window.location.href = `/delete/${sno}`;
+            });
+
+            cancelDeleteBtn.addEventListener('click', () => {
+                confirmDeleteDialog.style.display = 'none';
+            });
+        });
+    });
+</script>
+{% endblock %}
